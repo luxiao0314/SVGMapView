@@ -3,20 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_map_background"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context="com.zzt8888.taiwanmap.MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TaiWan is a part of China"
-        android:textSize="28sp"
-        />
-
-    <com.zzt8888.taiwanmap.MapView
-        android:background="@color/color_map_background"
+    <com.lucio.map.ZoomView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <com.lucio.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.lucio.map.ZoomView>
 
 </LinearLayout>
