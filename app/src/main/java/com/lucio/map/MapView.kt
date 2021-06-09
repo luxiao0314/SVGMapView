@@ -88,7 +88,6 @@ class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? 
 
     override fun onDraw(canvas: Canvas) {
         for (city in mapDatas) {
-//            city.path.reset()
             canvas.save()
             canvas.scale(scale, scale)
             city.onDraw(canvas)
