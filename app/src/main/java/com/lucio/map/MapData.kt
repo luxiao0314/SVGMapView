@@ -3,7 +3,7 @@ package com.lucio.map
 import android.graphics.*
 import androidx.annotation.ColorInt
 
-class MapData(var name: String, private var path: Path, @param:ColorInt private var fillColor: Int, @param:ColorInt private val strokeColor: Int, private val strokeWidth: Float) {
+class MapData(var name: String, var path: Path, @param:ColorInt private var fillColor: Int, @param:ColorInt private val strokeColor: Int, private val strokeWidth: Float) {
 
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     var isSelected = false

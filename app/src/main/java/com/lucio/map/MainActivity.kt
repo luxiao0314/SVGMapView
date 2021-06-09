@@ -11,9 +11,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mapview.setOnProvinceClickLisener({
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            if (it.contains("Nei", true)) {
+                mapview.setData(R.raw.neimeng)
+            }
         }, {
-            Toast.makeText(this, "空白地区", Toast.LENGTH_SHORT).show()
+            mapview.setData(R.raw.chinahigh)
         })
     }
 }

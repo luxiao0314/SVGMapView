@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.*
 import kotlin.math.atan2
 import kotlin.math.sqrt
 
-@ExperimentalCoroutinesApi
 class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
 
     private var scale = 0.5f
@@ -24,10 +23,6 @@ class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? 
     private var svgHeight = 0f
     private var mapDatas: List<MapData> = mutableListOf()
 
-    init {
-        initMapData()
-    }
-
     companion object {
         //将dp转换为像素单位
         fun dp2px(context: Context, dpValue: Float): Float {
@@ -36,8 +31,12 @@ class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? 
         }
     }
 
-    private fun initMapData() = GlobalScope.launch {
-        flow { emit(dom2xml(context, R.raw.neimeng)) }
+    init {
+        setData()
+    }
+
+    fun setData(id: Int = R.raw.chinahigh) = GlobalScope.launch {
+        flow { emit(dom2xml(context, id)) }
                 .flowOn(Dispatchers.IO)
                 .collect {
                     withContext(Dispatchers.Main) {
@@ -89,12 +88,15 @@ class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? 
 
     override fun onDraw(canvas: Canvas) {
         for (city in mapDatas) {
+//            city.path.reset()
             canvas.save()
             canvas.scale(scale, scale)
             city.onDraw(canvas)
             canvas.restore()
         }
     }
+
+    /********************************  滑动,缩放,移动,点击处理  **********************************/
 
     // 属性变量
     private var transX = 0f
