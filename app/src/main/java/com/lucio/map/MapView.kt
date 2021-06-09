@@ -16,8 +16,8 @@ import kotlin.math.sqrt
 class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
 
     private var scale = 0.5f
-    private var minWidth = 200f
-    private var minHeight = 200f
+    private var minWidth = dp2px(getContext(), 400f)
+    private var minHeight = dp2px(getContext(), 320f)
 
     //svg图的实际宽高
     private var svgWidth = 0f
@@ -25,8 +25,6 @@ class MapView @JvmOverloads constructor(context: Context?, attrs: AttributeSet? 
     private var mapDatas: List<MapData> = mutableListOf()
 
     init {
-        minWidth = dp2px(getContext(), 400f)
-        minHeight = dp2px(getContext(), 500f)
         initMapData()
     }
 
