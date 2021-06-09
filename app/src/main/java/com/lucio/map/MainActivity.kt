@@ -11,8 +11,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mapview.setOnProvinceClickLisener({
-            if (it.contains("Nei", true)) {
+            if (it.contains("nei", true)) {
                 mapview.setData(R.raw.neimeng)
+            } else if (it.contains("tai", true)) {
+                mapview.setData(R.raw.taiwanhigh)
             }
         }, {
             mapview.setData(R.raw.chinahigh)
