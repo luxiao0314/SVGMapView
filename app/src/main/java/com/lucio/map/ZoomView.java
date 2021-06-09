@@ -70,8 +70,7 @@ public class ZoomView extends RelativeLayout {
                     if (rotation < -360) {
                         rotation = rotation + 360;
                     }
-                    //关闭旋转功能
-//                    setRotation(rotation);
+                    setRotation(rotation);
                 }
                 break;
             case MotionEvent.ACTION_UP:

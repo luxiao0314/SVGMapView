@@ -11,7 +11,7 @@ class MapData(var name: String, private var path: Path, @param:ColorInt private 
     fun onDraw(canvas: Canvas) {
         //背景
         if (isSelected) {
-            paint.color = Color.LTGRAY
+            paint.color = Color.RED
         } else {
             paint.color = fillColor
         }
